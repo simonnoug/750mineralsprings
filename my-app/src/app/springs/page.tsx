@@ -50,8 +50,6 @@ export default function Home() {
         })
       );
       setFilteredSprings(filtered)
-      console.log(filtered.map(spring => spring.name)); // Log the names of all filtered springs
-      console.log(activeFilters)
     }
   }, [activeFilters, springs])
 

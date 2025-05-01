@@ -13,7 +13,12 @@ export default async function Home() {
   return (
     <main>
       {homePage?.image?.file && (
-        <div style={{ position: 'relative', width: '50%', height: '50vh' }}>
+        <div style={{ 
+          position: 'relative', 
+          width: '50%', 
+          height: '50vh',
+          margin: '0 auto' 
+        }}>
           <Image 
             src={urlForImage(homePage.image.file).url()}
             alt={homePage.image.caption || 'Home image'}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { getEvents } from '@/src/lib/sanity'
 import { Event } from "@/src/types/events"
-
+import Link from "next/link"
 
 
 
@@ -22,15 +22,16 @@ export default function Events() {
     }, [])
 
   return (
-    <section>
-      <ul>
+    <main>
         {events.map((item) => (
-          <li key={item.id || item.title}>
-            {item.date} - {item.title}
-          </li>
+          <div key={item._id}>
+             <Link href={`/events/${item.slug}`}>
+             {item.date} {item.title}
+              </Link>
+           
+          </div>
         ))}
-      </ul>
-    </section>
+    </main>
   )
   
 }

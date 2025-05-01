@@ -2,6 +2,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Source_Serif_4 } from "next/font/google"
 import NavBar from "@/src/components/nav-bar"
+import Footer from "@/src/components/footer"
 import type React from "react"
 
 const sourceSerif = Source_Serif_4({ subsets: ["latin"] })
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={`${sourceSerif.className} min-h-screen bg-white`}>
         <NavBar />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

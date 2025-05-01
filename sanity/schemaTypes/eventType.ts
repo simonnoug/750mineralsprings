@@ -10,14 +10,23 @@ export default {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'id',
-      title: 'ID',
-      type: 'number',
-    },
-    {
       name: 'date',
       title: 'Date',
-      type: 'datetime',
+      type: 'date',
+      options: {
+        dateFormat: 'YYYY.MM.DD',
+        calendarTodayLabel: 'Today',
+      },
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'date',
+        maxLength: 96,
+      },
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'springs',

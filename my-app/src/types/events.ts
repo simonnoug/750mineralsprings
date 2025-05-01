@@ -22,8 +22,9 @@ export interface ImageObject {
 
 export interface Event {
   title: string;
-  id?: number;
+  _id: number;
   date?: string; // ISO date string from datetime
+  slug: string;
   springs?: Spring[];
   description?: string;
   images?: ImageObject[];

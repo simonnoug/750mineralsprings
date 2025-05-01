@@ -1,0 +1,58 @@
+/* components/Footer.module.css */
+
+/* Footer wrapper as a small centered rectangle */
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  
+  /* Logo styling */
+  .logo {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    font-size: 20px;
+    font-family: 'Source Serif 4', serif;
+    line-height: 28px;
+  }
+  
+  .logo:hover {
+    transform: scale(1.1);
+  }
+  
+  /* About panel: hidden by default */
+  .aboutPanel {
+    position: absolute;
+    bottom: 20px; /* Position above the footer */
+    width: auto; /* Auto width instead of fixed */
+    min-width: 200px; /* Minimum width */
+    max-width: 90vw; /* Maximum width as 90% of viewport */
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    z-index: 10;
+    white-space: nowrap; /* Keep text on one line */
+  }
+  
+  /* Modifier class to show the panel */
+  .aboutPanelOpen {
+    opacity: 1;
+    visibility: visible;
+  }

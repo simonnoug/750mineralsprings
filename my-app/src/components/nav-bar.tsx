@@ -7,27 +7,27 @@ export default function NavBar() {
   const pathname = usePathname()
 
   return (
+    <>
+    <div>Spring activities: Kammena Vourla, 18.05.2025</div>
     <nav>
-      <Link
-      href="/springs"
-      >
+    <Link className="button" href="/friends">
+      FRIENDS
+    </Link>
+    <Link className="button" href="/springs">
       SPRINGS
-      </Link>
-      <Link
-      href="/events"
-      >
+    </Link>
+    <Link className="button" href="/events">
       EVENTS
       </Link>
-      <Link href="/friends">
-      FRIENDS
-      </Link>
+  
     <Link href="/">
       <img src="/Component 186 – 1.svg" alt="Logo" />
     </Link>
-    <Link href="/support">
+    <Link className="button" href="/support">
       Support us!
       </Link>
     </nav>
+    </>
   )
 }
 

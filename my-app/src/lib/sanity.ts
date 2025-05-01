@@ -10,17 +10,69 @@ export const client = createClient({
   token: process.env.SANITY_API_TOKEN,
 })
 
-export const getSprings = async (): Promise<Spring[]> => {
-  const query = '*[_type == "spring"]';
-  const springs = await client.fetch(query);
-  return springs;
-};
+const springsQuery = `*[_type == "spring"] | order(id asc){
+  _id,
+  id,
+  name,
+  location,
+  waterType,
+  accessibility,
+  // grab the raw slug object
+  slug
+}`
+
+export async function getSprings(): Promise<Spring[]> {
+  const raw = await client.fetch(springsQuery)
+  return raw.map((item: any) => ({
+    ...item,
+    // unwrap slug.current into a simple string
+    slug: item.slug?.current || "",
+  }))
+}
+
+export async function getSpringBySlug(slug: string): Promise<Spring | null> {
+  const query = `*[_type == "spring" && slug.current == $slug][0]{
+    _id,
+    id,
+    name,
+    location,
+    waterType,
+    accessibility,
+    slug
+  }`
+  const raw: any = await client.fetch(query, { slug })
+  if (!raw) return null
+  return {
+    ...raw,
+    slug: raw.slug?.current || "",
+  }
+}
 
 export const getEvents = async (): Promise<Event[]> => {
-  const query = '*[_type == "event"]';
-  const events = await client.fetch(query);
-  return events;
+  const query = '*[_type == "event"] | order(date desc){_id, title, description, date, slug}';
+  const raw = await client.fetch(query);
+  return raw.map((item: any) => ({
+    ...item,
+    slug: item.slug?.current || "",
+  }));
 };
+
+export async function getEventBySlug(slug: string): Promise<Event | null> {
+  const query = `*[_type == "event" && slug.current == $slug][0]{
+    _id,
+    title,
+    date,
+    description,
+    slug
+  }`
+  const raw: any = await client.fetch(query, { slug })
+  if (!raw) return null
+  return {
+    ...raw,
+    // unwrap slug.current into a simple string
+    slug: raw.slug?.current || "",
+  }
+}
 
 export const getHome = async (): Promise<any> => {
   const query = '*[_type == "home"]';
