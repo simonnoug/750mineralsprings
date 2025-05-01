@@ -13,8 +13,7 @@ export default {
         name: 'status',
         title: 'Status',
         type: 'string',
-        validation: (Rule: any) => Rule.required(),
-        option:
+        options:
             {
                 list: [
                 'Team',
@@ -24,6 +23,7 @@ export default {
                 'Saline'
                 ],
             },
+        validation: (Rule: any) => Rule.required(),
       },
       {
         name: 'subtitle',
