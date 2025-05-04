@@ -1,0 +1,13 @@
+.ListItem{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.ListItem__id{
+    color: var(--lowlight-color)
+}
+
+.ListItem:hover .ListItem__id {
+    color: var(--primary-color);
+}

@@ -1,3 +1,4 @@
+import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper";
 import { getAbout, getFriends } from "@/src/lib/sanity";
 
 export default async function About() {
@@ -15,62 +16,68 @@ export default async function About() {
     const salineFriends = friendsData.filter(friend => friend.status === "Saline");
 
   return (
-    <main>
-    <div>
-      CONTACT <br /> Email: friends@750mineralsprings.gr <br /> Instagram: 750mineralsprings.gr
-    </div>
-    <div>
-      ABOUT <br /> {homePage.about}
-    </div>
-    <div>
-      TEAM & COLLABORATORS
-      <ul>
-        {teamMembers.map((member, index) => (
-          <li key={member._id || index}>
-            {member.name} {member.subtitle && `, ${member.subtitle}`}
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div>
-      BOARD
-      <ul>
-        {boardMembers.map((member, index) => (
-          <li key={member._id || index}>
-            {member.name} {member.subtitle && `, ${member.subtitle}`}
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div>
-      2025 FRIENDS
+    <TwoColumnsWrapper padFirst padSecond>
       <div>
-        Sulfur:
-          {sulfurFriends.map((friend, index) => (
-            <span key={friend._id || index}>
-              {friend.name}
-              {index < sulfurFriends.length - 1 ? ', ' : ''}
-            </span>
-          ))}
+        <div>
+          <h1>CONTACT</h1>
+          <p>Email: friends@750mineralsprings.gr</p>
+          <p>Instagram: 750mineralsprings.gr</p>
+        </div>
+        <div>
+          ABOUT <br /> {homePage.about}
+        </div>
       </div>
       <div>
-        Iron: {ironFriends.map((friend, index) => (
-            <span key={friend._id || index}>
-              {friend.name}
-              {index < ironFriends.length - 1 ? ', ' : ''}
-            </span>
-          ))}
+          <div>
+          TEAM & COLLABORATORS
+          <ul>
+            {teamMembers.map((member, index) => (
+              <li key={member._id || index}>
+                {member.name} {member.subtitle && `, ${member.subtitle}`}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          BOARD
+          <ul>
+            {boardMembers.map((member, index) => (
+              <li key={member._id || index}>
+                {member.name} {member.subtitle && `, ${member.subtitle}`}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          2025 FRIENDS
+          <div>
+            Sulfur:
+              {sulfurFriends.map((friend, index) => (
+                <span key={friend._id || index}>
+                  {friend.name}
+                  {index < sulfurFriends.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+          </div>
+          <div>
+            Iron: {ironFriends.map((friend, index) => (
+                <span key={friend._id || index}>
+                  {friend.name}
+                  {index < ironFriends.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+          </div>
+          <div>
+            Saline: {salineFriends.map((friend, index) => (
+                <span key={friend._id || index}>
+                  {friend.name}
+                  {index < salineFriends.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+          </div>
+        </div>
       </div>
-      <div>
-        Saline: {salineFriends.map((friend, index) => (
-            <span key={friend._id || index}>
-              {friend.name}
-              {index < salineFriends.length - 1 ? ', ' : ''}
-            </span>
-          ))}
-      </div>
-    </div>
-    </main>
+    </TwoColumnsWrapper>
   )
 }
 

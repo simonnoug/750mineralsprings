@@ -1,0 +1,17 @@
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    border-bottom: 1px solid var(--lowlight-color);
+    justify-content: space-between; 
+    padding: 0 var(--primary-padding);
+    height: 88px
+}
+
+.navbar__left {
+    grid-column: 1;
+    justify-self: start;
+    display: flex;
+    gap: 0.5rem;
+  }
+

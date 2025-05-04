@@ -7,6 +7,7 @@ import SpringsList from "@/src/components/SpringsList"
 import type { Spring } from "@/src/types/spring"
 import { getSprings } from '@/src/lib/sanity'
 import dynamic from "next/dynamic";
+import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 
 const DynamicMap = dynamic(() => import("@/src/components/Map"), {
   ssr: false, // Prevents it from rendering on the server
@@ -54,39 +55,24 @@ export default function Home() {
   }, [activeFilters, springs])
 
   return (
-    <div style={{ 
-      display: 'flex', 
-      height: 'calc(100vh - 64px)', 
-      width: '100%',
-      overflow: 'hidden'
-    }}>
+    <TwoColumnsWrapper padFirst reverseOnMobile>
       {/* Left column: Filter + List */}
-      <div style={{ 
-        width: '30%', 
-        display: 'flex', 
-        flexDirection: 'column',
-        borderRight: '1px solid #e0e0e0',
-        overflow: 'hidden'
-      }}>
-        <div style={{ padding: '16px' }}>
+      <div>
+        <div>
           <FilterMenu
             activeFilters={activeFilters}
             allFilters={FILTER_TYPES}
             onToggleFilter={toggleFilter}
           />
         </div>
-        <div style={{ 
-          flexGrow: 1, 
-          overflowY: 'auto',
-          padding: '0 16px 16px 16px'
-        }}>
+        <div>
           <SpringsList springs={filteredSprings} />
         </div>
       </div>
 
       {/* Right column: Map */}
       <div style={{ 
-        width: '70%', 
+        width: '100%', 
         height: '100%',
         position: 'relative'
       }}>
@@ -100,6 +86,6 @@ export default function Home() {
           <DynamicMap springs={filteredSprings} />
         </div>
       </div>
-    </div>
+    </TwoColumnsWrapper>
   )
 }

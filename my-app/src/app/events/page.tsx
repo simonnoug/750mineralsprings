@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { getEvents } from '@/src/lib/sanity'
 import { Event } from "@/src/types/events"
 import Link from "next/link"
-
+import ListItem from "@/src/components/atoms/ListItem"
+import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 
 
 export default function Events() {
@@ -22,16 +23,19 @@ export default function Events() {
     }, [])
 
   return (
-    <main>
+    <TwoColumnsWrapper padFirst reverseOnMobile>
+      <div>
         {events.map((item) => (
           <div key={item._id}>
-             <Link href={`/events/${item.slug}`}>
-             {item.date} {item.title}
-              </Link>
-           
+            <ListItem
+              href={`/events/${item.slug}`}
+              id={item.date}
+              content={item.title}
+            />
           </div>
         ))}
-    </main>
+      </div>
+    </TwoColumnsWrapper>
   )
   
 }

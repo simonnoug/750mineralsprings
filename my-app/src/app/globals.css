@@ -1,36 +1,131 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
-
-body {
-  color: black;
-  background: white;
-  font-family: 'Source Serif 4', serif;
+/* reset*/
+/* 1. Box-sizing: make width/padding calculations predictable */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-
-.button {
-  text-align : center;
-  border: 1px solid #e6e6e6;
-  border-radius: 10px;
-  opacity: 1;
-  text-align: center;
-  padding: 0px 5px 5px 5px
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  background-color: transparent;
+/* 2. Remove default margins & paddings */
+html, body, h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd, ul, ol,
+pre, button, input, fieldset, legend {
   margin: 0;
   padding: 0;
-  font-weight: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  display: inline-block;
 }
 
-/* Reset focus styles too, if desired */
-a:focus {
-  outline: none;
+/* 3. Base body styles */
+html {
+  /* you can use % here if you plan on user-scalable rems */
+  font-size: 100%;
+  line-height: 1.5;
 }
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-base);
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+/* 4. Remove list styling for lists you’ll restyle yourself */
+ul, ol {
+  list-style: none;
+}
+
+/* 5. Reset link styles (you’ll restyle via your Button/Link atom) */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 6. Reset form elements to inherit font & remove default borders */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+/* 7. Images & media: make them responsive & non-drifting */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 8. Tables: collapse borders by default */
+table {
+  border-collapse: collapse;
+}
+
+/* 9. Headings: inherit weight/color unless you override */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  color: inherit;
+}
+
+/*
+ASSETS
+*/
+
+html {
+  font-size: clamp(0.875rem, 0.8333333vw + 0.25rem, 1.25rem);
+}
+
+:root {
+  --main-bg-color: #ffffff;
+  --primary-color: #000000;
+  --highlight-color: #0033A0;
+  --lowlight-color: #E6E6E6;
+  --primary-padding: 1rem;
+  --primary-radius: 10px;
+  
+  /* Fonts */
+   --ff-serif: 'Source Serif 4', serif;
+   --fw-regular: 400;
+
+   --fs-heading: 1rem;
+   --lh-heading: 1.4;
+   --ls-heading: 0.04em;
+   --tt-heading: uppercase;
+
+   --fs-body:    1rem;
+   --lh-body:    1.4;
+   --ls-body:    0.04em;
+
+   --fs-caption: 0.75rem;
+   --lh-caption: 1.4;
+   --ls-caption: 0.04em;
+
+}
+
+
+
+body {
+  color: var(--primary);
+  background: var(--main-bg-color);
+  font-family: var(--ff-serif);
+  font-weight: var(--fw-regular);
+}
+
+h1 {
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  text-transform: var(--tt-heading);
+}
+
+p {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+}
+
+
+
 

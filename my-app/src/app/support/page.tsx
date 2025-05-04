@@ -1,13 +1,13 @@
+import TwoColumnWrapper from "@/src/components/layouts/TwoColumnsWrapper"
+
 export default function support() {
   return (
-    <div>
-      <div>
-        <h1>About the 750 mineral springs of Greece</h1>
+    <TwoColumnWrapper padFirst padSecond>
+        <p>Test </p>
         <p>
         Here you can support us
         </p>
-      </div>
-    </div>
+    </TwoColumnWrapper> 
   )
 }
 

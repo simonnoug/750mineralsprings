@@ -1,0 +1,17 @@
+.button {
+    text-align : center;
+    border: 1px solid var(--lowlight-color);
+    border-radius: var(--primary-radius);
+    opacity: 1;
+    height: fit-content;
+    width: fit-content;
+    padding: 0 4px;
+  }
+
+.button:hover {
+    border-color: var(--primary-color)
+}
+
+.button--active {
+    border-color: var(--highlight-color);
+}

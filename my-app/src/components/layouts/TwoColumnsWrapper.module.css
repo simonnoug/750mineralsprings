@@ -1,0 +1,35 @@
+/* components/layout/TwoColumnWrapper.module.css */
+
+
+/* Mobile by default: stack in source order */
+.two-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1 /* Add this */
+}
+
+/* Mobile-only reverse */
+.two-col--reverse-mobile {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Equal flexing */
+.two-col__column {
+  flex: 1 1 0;
+
+}
+.two-col__column--padded > :first-child{
+  margin: var(--primary-padding);
+}
+
+/* ≥ bp-md: force side-by-side and cancel the mobile-reverse */
+@media (min-width: 1000px) {
+  .two-col {
+    flex-direction: row;
+  }
+  /* if reverseOnMobile was applied, drop it and just row */
+  .two-col--reverse-mobile {
+    flex-direction: row;
+  }
+}

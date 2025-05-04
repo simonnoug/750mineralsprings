@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import styles from '../styles/footer.module.css'
+import styles from './footer.module.css'
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false)
