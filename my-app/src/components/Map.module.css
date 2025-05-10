@@ -1,0 +1,17 @@
+/* components/MapComponent.module.css */
+
+.marker {
+    cursor: pointer;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary-color)
+  }
+  
+  .marker--hovered {
+    background-color: var(--highlight-color);
+  }
+  
+  .marker--active {
+    background-color: blue;
+  }

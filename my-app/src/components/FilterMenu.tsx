@@ -1,33 +1,77 @@
-interface FilterMenuProps {
-  activeFilters: string[];
-  allFilters: readonly string[];
-  onToggleFilter: (filter: string) => void;
-}
+// components/filters/FilterUI.tsx
+import FilterGroup from "./atoms/FilterGroup";
+import { useSpringContext } from "../contexts/SpringContext";
 
-export default function FilterMenu({ activeFilters, allFilters, onToggleFilter }: FilterMenuProps) {
-  const orderedFilters = [...activeFilters, ...allFilters.filter((filter) => !activeFilters.includes(filter))];
+const FILTER_OPTIONS = {
+  region: [
+    "Attica", "Central Greece", "Central Macedonia", "Crete",
+    "Eastern Macedonia and Thrace", "Epirus", "Ionian Islands",
+    "North Aegean", "Peloponnese", "South Aegean", "Thessaly",
+    "Western Greece", "Western Macedonia"
+  ],
+  ownership: ["Private", "Public", "Unknown"],
+  access: ["Open", "No access", "Unknown"],
+  properties: ["Radon"],
+  treatment: ["Arthritis"],
+};
+
+export default function FilterUI() {
+  const { filters, setFilters, resetFilters } = useSpringContext();
+
+  const handleToggle = (key: keyof typeof filters, value: string) => {
+    const current = filters[key];
+    const updated = current.includes(value)
+      ? current.filter((v) => v !== value)
+      : [...current, value];
+    setFilters({ [key]: updated });
+  };
 
   return (
-    <div className="absolute top-6 left-6 z-10 w-64">
-      <div className="mb-2">
-        <div className="flex flex-wrap gap-[1px]">
-          {orderedFilters.map((filter) => (
-            <button
-              key={filter}
-              className={`px-3 py-1 bg-white border border-black flex items-center
-                ${activeFilters.includes(filter) ? "bg-yellow-200" : ""}`}
-              onClick={() => onToggleFilter(filter)}
-            >
-              {filter}
-              {activeFilters.includes(filter) ? (
-                <span className="ml-2 text-lg leading-none">&times;</span>
-              ) : (
-                <span className="ml-2 text-lg leading-none">+</span>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
+    <div>
+      <FilterGroup
+        label="REGIONS"
+        options={["All", ...FILTER_OPTIONS.region]}
+        selected={filters.region}
+        onToggle={(val) =>
+          val === "All" ? setFilters({ region: [] }) : handleToggle("region", val)
+        }
+      />
+
+      <FilterGroup
+        label="OWNERSHIP"
+        options={["All", ...FILTER_OPTIONS.ownership]}
+        selected={filters.ownership}
+        onToggle={(val) =>
+          val === "All" ? setFilters({ ownership: [] }) : handleToggle("ownership", val)
+        }
+      />
+
+      <FilterGroup
+        label="ACCESS"
+        options={["All", ...FILTER_OPTIONS.access]}
+        selected={filters.access}
+        onToggle={(val) =>
+          val === "All" ? setFilters({ access: [] }) : handleToggle("access", val)
+        }
+      />
+
+      <FilterGroup
+        label="PROPERTIES"
+        options={["All", ...FILTER_OPTIONS.properties]}
+        selected={filters.properties}
+        onToggle={(val) =>
+          val === "All" ? setFilters({ properties: [] }) : handleToggle("properties", val)
+        }
+      />
+
+      <FilterGroup
+        label="TREATMENT"
+        options={["All", ...FILTER_OPTIONS.treatment]}
+        selected={filters.treatment}
+        onToggle={(val) =>
+          val === "All" ? setFilters({ treatment: [] }) : handleToggle("treatment", val)
+        }
+      />
     </div>
   );
 }

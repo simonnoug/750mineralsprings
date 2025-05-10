@@ -15,8 +15,11 @@ const springsQuery = `*[_type == "spring"] | order(id asc){
   id,
   name,
   location,
-  waterType,
-  accessibility,
+  region,
+  ownership,
+  access,
+  properties,
+  treatment,
   // grab the raw slug object
   slug
 }`

@@ -30,7 +30,7 @@ export default function Button({
     )
   }
   return (
-    <button onClick={onClick} className={`${baseClass} ${modClass}`}>
+    <button onClick={onClick} className={`${className}`}>
       {children}
     </button>
   )
