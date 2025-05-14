@@ -1,28 +1,25 @@
+import { image } from "framer-motion/client";
+import imageWithCaption from "./objects/imageWithCaption";
+
 // Example schema for regular pages
 export default {
     name: 'home',
-    title: 'Home Image', 
+    title: 'Home Page', 
+    __experimental_actions: [/*'create',*/ 'update', 'delete', 'publish'],
     type: 'document',
-    __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
-    fields: [
+        fields: [
+        {
+            name: 'title',
+            title: 'Title',
+            type: 'string', 
+            readOnly: true,
+            hidden: true,
+            initialValue: 'Home Content',
+            description: 'This title is fixed for the Home page'
+            },
         {
           name: 'image', 
           title: 'Image Object',
-            type: 'object',
-            fields: [
-                {
-                    name: 'file',
-                    title: 'File',
-                    type: 'image',
-                    options: {
-                        hotspot: true,
-                    },
-                },
-                {
-                    name: 'caption',
-                    title: 'Caption',
-                    type: 'string',
-                },
-            ],
+          type: 'imageWithCaption',
         },
       ]}

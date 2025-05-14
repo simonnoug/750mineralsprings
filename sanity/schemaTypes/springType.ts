@@ -1,5 +1,5 @@
 export default {
-  name: 'spring',
+  name: 'spring',  // This name must match what's used in deskStructure
   title: 'Springs',
   type: 'document',
   preview: {
@@ -63,6 +63,16 @@ export default {
           'Western Macedonia',
         ],
       },
+    },
+    {
+      name: 'municipality',
+      title: 'Municipality',
+      type: 'string',
+    },
+    {
+      name: 'note',
+      title: 'Note',
+      type: 'string'
     },
     {
       name: 'properties',

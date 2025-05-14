@@ -1,5 +1,6 @@
 import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper";
 import { getAbout, getFriends } from "@/src/lib/sanity";
+import Link from "next/link";
 
 export default async function About() {
    const aboutData = await getAbout();
@@ -33,7 +34,13 @@ export default async function About() {
           <ul>
             {teamMembers.map((member, index) => (
               <li key={member._id || index}>
-                {member.name} {member.subtitle && `, ${member.subtitle}`}
+                {member.slug ? (
+                  <Link href={`/friends/${member.slug.current}`}>
+                    {member.name}{member.subtitle && `, ${member.subtitle}`}
+                  </Link>
+                ) : (<>
+                  {member.name}{member.subtitle && `, ${member.subtitle}`}
+                </>)}
               </li>
             ))}
           </ul>
@@ -43,7 +50,7 @@ export default async function About() {
           <ul>
             {boardMembers.map((member, index) => (
               <li key={member._id || index}>
-                {member.name} {member.subtitle && `, ${member.subtitle}`}
+                {member.name}{member.subtitle && `, ${member.subtitle}`}
               </li>
             ))}
           </ul>

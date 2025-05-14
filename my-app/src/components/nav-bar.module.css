@@ -15,3 +15,10 @@
     gap: 0.5rem;
   }
 
+.navbar__right {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    gap: 0.5rem;
+  }
+

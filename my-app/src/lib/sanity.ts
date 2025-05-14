@@ -38,10 +38,15 @@ export async function getSpringBySlug(slug: string): Promise<Spring | null> {
     _id,
     id,
     name,
+    slug,
     location,
-    waterType,
-    accessibility,
-    slug
+    region,
+    municipality,
+    note,
+    ownership,
+    access,  
+    properties,
+    treatment,
   }`
   const raw: any = await client.fetch(query, { slug })
   if (!raw) return null
@@ -62,11 +67,12 @@ export const getEvents = async (): Promise<Event[]> => {
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
   const query = `*[_type == "event" && slug.current == $slug][0]{
-    _id,
+    slug,
+    id,
     title,
     date,
     description,
-    slug
+    images,
   }`
   const raw: any = await client.fetch(query, { slug })
   if (!raw) return null
@@ -78,7 +84,7 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
 }
 
 export const getHome = async (): Promise<any> => {
-  const query = '*[_type == "home"]';
+  const query = '*[_type == "home" && _id=="homePage"][0]{image}';
   const home = await client.fetch(query);
   return home;
 }
@@ -93,4 +99,25 @@ export const getFriends = async (): Promise<any> => {
   const query = '*[_type == "friend"]';
   const friend = await client.fetch(query);
   return friend;
+}
+
+export async function getFriendBySlug(slug: string): Promise<any | null> {
+  const query = `*[_type == "friend" && slug.current == $slug][0]{
+    slug,
+    name,
+    description,
+    image,
+  }`
+  const raw: any = await client.fetch(query, { slug })
+  if (!raw) return null
+  return {
+    ...raw,
+    // unwrap slug.current into a simple string
+    slug: raw.slug?.current || "",
+  }}
+
+export const getSupport = async (): Promise<any> => {
+  const query = '*[_type == "support"][0]{image, membership, payment}';
+  const support = await client.fetch(query);
+  return support;
 }

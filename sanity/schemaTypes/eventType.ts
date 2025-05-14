@@ -1,5 +1,5 @@
 export default {
-  name: 'event',
+  name: 'event',  // This name must match what's used in deskStructure
   title: 'Events',
   type: 'document',
   fields: [
@@ -17,6 +17,12 @@ export default {
         dateFormat: 'YYYY.MM.DD',
         calendarTodayLabel: 'Today',
       },
+    },
+    {
+      name: 'id',
+      title: 'Id',
+      type: 'number',
+      validation: (Rule: any) => Rule.required(),
     },
     {
       name: 'slug',
@@ -43,33 +49,12 @@ export default {
     {
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
     },
     {
       name: 'images',
       title: 'Images',
       type: 'array',
-      of: [
-        {
-        name: 'imageObject',
-        type: 'object',
-        fields: [
-          {
-            name: 'file',
-            title: 'File',
-            type: 'image',
-            options: {
-              hotspot: true,
-            },
-          },
-          {
-            name: 'caption',
-            title: 'Caption',
-            type: 'string',
-          },
-        ],
-        },
-        ],
-    },
-]   
-}   
+      of: [{type: 'imageWithCaption'}],   
+}]}

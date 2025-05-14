@@ -1,14 +1,13 @@
 import { getHome } from '@/src/lib/sanity';
 import Image from 'next/image';
 import { urlForImage } from '@/src/lib/sanityImageUrl';
+import ImageWithCaption from '../components/atoms/ImageWithCaption';
 
 export default async function Home() {
-  const homeData = await getHome();
+  const homePage = await getHome();
   
   // getHome returns an array, so we need to get the first item
-  const homePage = homeData[0];
   
-  console.log('homeData:', homePage); // For debugging
   
   return (
     <main>
@@ -19,13 +18,9 @@ export default async function Home() {
           height: '50vh',
           margin: '0 auto' 
         }}>
-          <Image 
-            src={urlForImage(homePage.image.file).url()}
-            alt={homePage.image.caption || 'Home image'}
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
+          <ImageWithCaption
+            file={homePage.image.file}
+            caption={homePage.image.caption}/>
         </div>
       )}
     </main>

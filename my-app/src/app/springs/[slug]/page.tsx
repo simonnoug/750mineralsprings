@@ -1,6 +1,6 @@
+import Button from "@/src/components/atoms/Button"
 import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 import { getSpringBySlug } from "@/src/lib/sanity"
-import Link from "next/link"
 
 export default async function SpringPage({
   params,
@@ -12,16 +12,16 @@ export default async function SpringPage({
   return (
     <TwoColumnsWrapper padFirst reverseOnMobile>
      <div>
-    <Link href="/springs" className="button"> Back</Link>
+    <Button href="/springs"> Back</Button>
     <dl>
         <dt>#</dt><dd>{formattedId}</dd>
         <dt>SPRING</dt><dd>{spring?.name}</dd>
-        <dt>EVENS</dt> <dd>event</dd>
-        <dt>REGION</dt><dd>region</dd>
-        <dt>MUNICIPALITY</dt><dd>municiaplity</dd>
-        <dt>NOTE</dt><dd>note</dd>
-        <dt>OWNERSHIP</dt><dd>ownership</dd>
-        <dt>TREATMENTS</dt><dd>treatments</dd>
+        <dt>EVENTS</dt> <dd>event</dd>
+        <dt>REGION</dt><dd>{spring?.region}</dd>
+        <dt>MUNICIPALITY</dt><dd>{spring?.municipality}</dd>
+        <dt>NOTE</dt><dd>{spring?.note}</dd>
+        <dt>OWNERSHIP</dt><dd>{spring?.ownership?.longerOption}</dd>
+        <dt>TREATMENTS</dt><dd>{spring?.treatment}</dd>
         <dt>PHOTO</dt><dd>photos</dd>
         <dt>LOCATION</dt><dd>{spring?.location ? `${spring.location.lat}, ${spring.location.lng}` : ""}</dd>
     </dl>

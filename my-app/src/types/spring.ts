@@ -9,7 +9,14 @@ export interface Spring {
       lng: number;
     };
     region: string;
-    ownership: string;
+    municipality: string;
+    note: string;
+    ownership: {
+      _type: 'object';
+      id: number;
+      shorterOption: string;
+      longerOption: string;
+    }
     access: string;
     properties: string[];
     treatment: string[];
