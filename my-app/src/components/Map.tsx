@@ -1,5 +1,6 @@
 'use client'
 
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import ReactMapGL, { Marker } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRouter } from "next/navigation";
@@ -10,9 +11,8 @@ interface MapComponentProps {
   setMapInstance?: (instance: any) => void;
 }
 
-const MapComponent: React.FC<MapComponentProps> = ({
-  setMapInstance,
-}) => {
+const MapComponent = forwardRef<any, MapComponentProps>(({ setMapInstance }, ref) => {
+  const internalMapRef = useRef<any>(null);
   const router = useRouter();
   const {
     filteredSprings,
@@ -26,6 +26,17 @@ const MapComponent: React.FC<MapComponentProps> = ({
     setMapInstance?.(e.target);
   };
 
+  useImperativeHandle(ref, () => ({
+    zoomTo: (lng: number, lat: number, zoom = 12) => {
+      internalMapRef.current?.easeTo({
+        center: [lng, lat],
+        zoom,
+        duration: 1000,      // half-second snap
+        easing: t => t,
+      });
+    }
+  }));
+
   const handleMarkerClick = (slug: string, id: string) => {
     setActiveId(id);
     router.push(`/springs/${slug}`);
@@ -36,13 +47,16 @@ const MapComponent: React.FC<MapComponentProps> = ({
       id="myMap"
       mapboxAccessToken="pk.eyJ1IjoibGVvbi1oYW0iLCJhIjoiY2x6dmhkaTQ0MDcyZDJxc2R6dWx2eGJsYSJ9.yIlmFp0nhGD7aygFZQzFHg"
       initialViewState={{
-        longitude: 21.8243,
-        latitude: 39.0742,
-        zoom: 6,
+        longitude: 23.803,
+        latitude: 38.250,
+        zoom: 5.7,
       }}
       style={{ width: '100%', height: '100%' }}
       mapStyle="mapbox://styles/leon-ham/cm73r9sso01s901s22sv9hnlm"
       onLoad={handleMapLoad}
+      ref={internalMapRef}
+      attributionControl={false}
+      logoPosition="bottom-right"
     >
       {filteredSprings
         .filter(spring => spring.location?.lng && spring.location?.lat)
@@ -74,6 +88,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
         })}
     </ReactMapGL>
   );
-};
+});
 
 export default MapComponent;

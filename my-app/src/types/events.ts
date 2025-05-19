@@ -1,8 +1,4 @@
-export interface Spring {
-  _id: string;
-  name: string;
-  // Add other properties as needed
-}
+import { Spring } from './spring';
 
 export interface ImageObject {
   file: {
@@ -29,6 +25,7 @@ export interface Event {
   springs?: Spring[];
   description?: any;
   images?: ImageObject[];
+  image?: ImageObject;
 }
 
 

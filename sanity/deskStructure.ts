@@ -51,5 +51,12 @@ export const deskStructure = (S: StructureBuilder) =>
           S.document()
             .schemaType('support')
             .documentId('supportPage')
+        ),
+        S.listItem()
+        .title('Marquee Content')
+        .child(
+          S.document()
+            .schemaType('marquee')
+            .documentId('marqueeContent')
         )
     ])

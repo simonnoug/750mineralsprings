@@ -3,10 +3,14 @@ import Button from "./atoms/Button"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import styles from './nav-bar.module.css'
+import LogoSrc2 from '../../public/750springsLOGO2.svg'
+import LogoSrc1 from '../../public/750springsLOGO1.svg'
+
 
 
 export default function NavBar() {
   const pathname = usePathname()
+  const isHome = pathname === '/'
 
   return (
     <nav className={styles.navbar}>
@@ -16,8 +20,9 @@ export default function NavBar() {
         <Button href="/events" isActive={pathname === '/events'}>EVENTS</Button>
       </div>
       <div className={styles.navbar__logo}>
-        <Link href="/">
-          <img src="/Component 186 – 1.svg" alt="Logo" />
+        <Link href="/" className={`${styles.navbar__logoContainer} ${isHome ? styles['navbar__logoContainer--active'] : ''}`}>
+          <LogoSrc1 className={styles.logo} role="img"  aria-label="Friends of the 750 Mineral Springs of Greece"/>
+          <LogoSrc2 className={styles.logo} role="img"  aria-label="Friends of the 750 Mineral Springs of Greece"/>
         </Link>
       </div>
       <div className={styles.navbar__right}>
@@ -26,4 +31,3 @@ export default function NavBar() {
     </nav>
   )
 }
-

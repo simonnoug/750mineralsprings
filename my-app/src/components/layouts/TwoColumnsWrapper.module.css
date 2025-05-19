@@ -24,7 +24,7 @@
 }
 
 /* ≥ bp-md: force side-by-side and cancel the mobile-reverse */
-@media (min-width: 1000px) {
+@media (min-width: 768px) {
   .two-col {
     flex-direction: row;
   }

@@ -12,7 +12,7 @@ export default function Footer() {
   const panelVariants = {
     closed: {
       opacity: 0,
-      y: 20,
+      y: 70,
       transition: { duration: 0.2 }
     },
     open: {
@@ -26,16 +26,17 @@ export default function Footer() {
     <footer className={styles.footer}>
       {/* 2. motion.div with variants */}
       <motion.div
-        className={`${styles.aboutPanel} ${isOpen ? styles.aboutPanelOpen : ''}`}
+        className={styles.aboutPanel}
         variants={panelVariants}
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
       >
-        <p>
-          Website design: Jason Faulter<br />
-          Website development: Simon Nougué<br />
-          © Friends of the 750 Mineral Springs of Greece
-        </p>
+        <div className={styles.container}>
+          Website design: <i>Jason Faulter</i><br />
+          Website development: <i>Simon Nougué</i><br />
+          © Friends of the 750 Mineral Springs of Greece <br />
+        <a href='https://www.mapbox.com/about/maps/' target='_blank'>Maps &copy; Mapbox &copy; OpenStreetMap</a>
+        </div>
       </motion.div>
 
       {/* 3. clickable logo toggles isOpen */}

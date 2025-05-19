@@ -14,16 +14,19 @@ export default function FilterGroup({
   selected,
   onToggle,
 }: FilterGroupProps) {
+  // Check if no filters are selected or if "All" should be active
+  const isAllActive = selected.length === 0;
+  
   return (
-    <div>
+    <div style={{ marginBottom: "1rem" }}>
       <h4>{label}</h4>
-      <div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
         {options.map((option) => (
           <Button
             key={option}
             onClick={() => onToggle(option)}
             variant="primary"
-            isActive={selected.includes(option)}
+            isActive={option === "All" ? isAllActive : selected.includes(option)}
           >
             {option}
           </Button>

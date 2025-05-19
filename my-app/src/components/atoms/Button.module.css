@@ -6,6 +6,8 @@
     height: fit-content;
     width: fit-content;
     padding: 0 4px;
+    font-size: var(fs-body);
+    line-height: var(lh-body);
   }
 
 .button:hover {
@@ -14,4 +16,10 @@
 
 .button--active {
     border-color: var(--highlight-color);
+}
+
+/* Specific styling for secondary variant when active */
+.button--secondary.button--active {
+    /* Add your specific styles for secondary button active state here */
+    border-color: var(--primary-color)
 }

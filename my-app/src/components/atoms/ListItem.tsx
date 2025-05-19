@@ -9,7 +9,7 @@ type ListItemProps = {
 }
 
 export default function ListItem({
-  href,id,content, isHovered = false,
+  href, id, content, isHovered = false,
 }: ListItemProps) {
 
   const className = [
@@ -17,9 +17,19 @@ export default function ListItem({
     isHovered ? styles['ListItem--hovered'] : '',
   ].filter(Boolean).join(' ')
 
+  if (!href) {
     return (
-        <Link href={href} className={className}>
-            <div className={styles.ListItem__id}>{id}</div> 
-            <div className={styles.ListItem__content}>{content}</div> 
-        </Link>
-    )}
+      <div className={className}>
+        <div className={styles.ListItem__id}>{id}</div> 
+        <div className={styles.ListItem__content}>{content}</div> 
+      </div>
+    )
+  }
+
+  return (
+    <Link href={href} className={className}>
+      <div className={styles.ListItem__id}>{id}</div> 
+      <div className={styles.ListItem__content}>{content}</div> 
+    </Link>
+  )
+}

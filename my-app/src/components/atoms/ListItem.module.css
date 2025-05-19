@@ -8,10 +8,10 @@
     color: var(--lowlight-color)
 }
 
-/*.ListItem:hover .ListItem__id {
+.ListItem:hover .ListItem__id {
     color: var(--primary-color);
 }
-*/
+
 
 .ListItem--hovered .ListItem__id {
     color: var(--primary-color);

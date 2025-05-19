@@ -1,7 +1,6 @@
-import { Spring } from "@/src/types/spring";
 import { useSpringContext } from "@/src/contexts/SpringContext";
-import Link from "next/link";
 import ListItem from "./atoms/ListItem";
+import formatted from "./atoms/formatted";
 
 // Remove the props interface as we're using context
 const SpringsList: React.FC = () => {
@@ -12,12 +11,6 @@ const SpringsList: React.FC = () => {
       <div>
         {filteredSprings.map((spring) => {
           // compute three‑digit ID
-          const formattedId =
-            spring?.id < 10
-              ? `00${spring?.id}`
-              : spring?.id < 100
-              ? `0${spring?.id}`
-              : `${spring?.id}`
 
           return (
             <div 
@@ -28,7 +21,7 @@ const SpringsList: React.FC = () => {
             >
               <ListItem
                 href={`/springs/${spring.slug}`}
-                id={formattedId}
+                id={formatted(spring.id)}
                 content={spring.name}
                 isHovered={hoveredId === spring._id}
               />

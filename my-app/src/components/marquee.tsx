@@ -1,14 +1,15 @@
 import Marquee from 'react-fast-marquee';
 import styles from './marquee.module.css'
+import { getMarquee } from '../lib/sanity';
+import Link from 'next/link';
 
-const MarqueeHeader = () => {
+export default async function MarqueeHeader(){
+    const marquee = await getMarquee()
     return (
         <div className={styles.marqueeHeader}>
         <Marquee className={styles.marqueeHeader__content}>
-            <div>Spring activities: Kammena Vourla, 18.05.2025</div>
+            <Link href={`/events/${marquee.link.slug.current}`}>{marquee.content}</Link>
         </Marquee>
         </div>
     )
 }
-
-export default MarqueeHeader

@@ -133,6 +133,12 @@ export default {
       },
     },
     {
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [{type: 'imageWithTitle'}],
+    },
+    {
       name: 'slug',
       title: 'Slug',
       type: 'slug',

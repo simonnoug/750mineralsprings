@@ -2,13 +2,15 @@ import TwoColumnWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 import { getSupport } from "@/src/lib/sanity";
 import { PortableText } from "next-sanity"
 import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
+import style from "@/src/components/page.module.css"
 
 export default async function support() {
   const supportData = await getSupport();
   return (
-    <TwoColumnWrapper padFirst padSecond>
-      <div>
-        <h1>Membership</h1>
+    <TwoColumnWrapper padFirst>
+      <dl className={style.container}>
+        <dt>Membership</dt>
+        <dd>
         <PortableText
           value={supportData.membership}
           components={{
@@ -17,7 +19,9 @@ export default async function support() {
             }
           }}
         />
-        <h1>Payment</h1>
+        </dd>
+        <dt>Payment</dt>
+        <dd>
         <PortableText
           value={supportData.payment}
           components={{
@@ -26,7 +30,8 @@ export default async function support() {
             }
           }}
         />
-      </div>
+        </dd>
+      </dl>
       <ImageWithCaption 
         file={supportData.image.file} 
         caption={supportData.image.caption}

@@ -1,6 +1,7 @@
 import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper";
 import { getAbout, getFriends } from "@/src/lib/sanity";
 import Link from "next/link";
+import style from "@/src/components/page.module.css";
 
 export default async function About() {
    const aboutData = await getAbout();
@@ -18,72 +19,67 @@ export default async function About() {
 
   return (
     <TwoColumnsWrapper padFirst padSecond>
-      <div>
-        <div>
-          <h1>CONTACT</h1>
-          <p>Email: friends@750mineralsprings.gr</p>
-          <p>Instagram: 750mineralsprings.gr</p>
-        </div>
-        <div>
-          ABOUT <br /> {homePage.about}
-        </div>
-      </div>
-      <div>
-          <div>
-          TEAM & COLLABORATORS
-          <ul>
-            {teamMembers.map((member, index) => (
-              <li key={member._id || index}>
-                {member.slug ? (
-                  <Link href={`/friends/${member.slug.current}`}>
-                    {member.name}{member.subtitle && `, ${member.subtitle}`}
-                  </Link>
-                ) : (<>
-                  {member.name}{member.subtitle && `, ${member.subtitle}`}
-                </>)}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          BOARD
-          <ul>
-            {boardMembers.map((member, index) => (
-              <li key={member._id || index}>
-                {member.name}{member.subtitle && `, ${member.subtitle}`}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          2025 FRIENDS
-          <div>
-            Sulfur:
-              {sulfurFriends.map((friend, index) => (
-                <span key={friend._id || index}>
-                  {friend.name}
-                  {index < sulfurFriends.length - 1 ? ', ' : ''}
-                </span>
+      <dl className={style.container}>
+        <dt>Contact</dt>
+          <dd>Email: friends@750mineralsprings.gr <br/> Instagram: 750mineralsprings.gr </dd>
+        <dt>About</dt>
+          <dd>{homePage.about}</dd>
+      </dl>
+      <dl className={style.container}>
+        <dt>Team & Collaborators</dt>
+          <dd>
+            <ul>
+              {teamMembers.map((member, index) => (
+                <li key={member._id || index}>
+                  {member.slug ? (
+                    <Link href={`/friends/${member.slug.current}`}>
+                      <i className={style.friend}>{member.name}</i>{member.subtitle && `, ${member.subtitle}`}
+                    </Link>
+                  ) : (<>
+                    <i>{member.name}</i>{member.subtitle && `, ${member.subtitle}`}
+                  </>)}
+                </li>
               ))}
-          </div>
-          <div>
-            Iron: {ironFriends.map((friend, index) => (
-                <span key={friend._id || index}>
-                  {friend.name}
-                  {index < ironFriends.length - 1 ? ', ' : ''}
-                </span>
+            </ul>
+          </dd>
+        <dt>Board</dt>
+          <dd>
+            <ul>
+              {boardMembers.map((member, index) => (
+                <li key={member._id || index}>
+                  <i>{member.name}</i>{member.subtitle && `, ${member.subtitle}`}
+                </li>
               ))}
-          </div>
-          <div>
-            Saline: {salineFriends.map((friend, index) => (
-                <span key={friend._id || index}>
-                  {friend.name}
-                  {index < salineFriends.length - 1 ? ', ' : ''}
-                </span>
-              ))}
-          </div>
-        </div>
-      </div>
+            </ul>
+          </dd>
+        <dt>2025 FRIENDS</dt>
+          <dd>
+            <div>
+              Sulfur: {sulfurFriends.map((friend, index) => (
+                  <span key={friend._id || index}>
+                    {friend.name}
+                    {index < sulfurFriends.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
+            <div>
+              Iron: {ironFriends.map((friend, index) => (
+                  <span key={friend._id || index}>
+                    {friend.name}
+                    {index < ironFriends.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
+            <div>
+              Saline: {salineFriends.map((friend, index) => (
+                  <span key={friend._id || index}>
+                    {friend.name}
+                    {index < salineFriends.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
+            </div>
+          </dd>
+        </dl>
     </TwoColumnsWrapper>
   )
 }

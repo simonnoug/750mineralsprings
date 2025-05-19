@@ -1,3 +1,5 @@
+import { Event } from './events';
+
 export interface Spring {
     _id: string;
     id: number;
@@ -17,9 +19,11 @@ export interface Spring {
       shorterOption: string;
       longerOption: string;
     }
+    images: any[];
     access: string;
     properties: string[];
     treatment: string[];
+    events: Event[];
     // ... any other fields you need
   };
   

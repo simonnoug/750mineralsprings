@@ -22,3 +22,38 @@
     gap: 0.5rem;
   }
 
+  .navbar__logo {
+    grid-column: 2;
+    display: flex;
+    direction: row;
+  }
+
+.logo {
+    height: 40px;
+    fill: currentColor;   
+}
+
+.navbar__logoContainer {
+    display: flex;
+    flex-direction: row; /* Default direction is row */
+    align-items: center;
+    min-width: 200px;
+    padding: 0 2rem; /* Set a minimum width before switching to column */
+}
+
+/* Media query to change direction when container is smaller than minimum width */
+@media (max-width: 768px) {
+  .navbar__logoContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: -5px; /* Add some spacing between elements when in column */
+  }
+  .logo {
+    height: 20px;
+  }
+}
+
+.navbar__logoContainer:hover .logo,
+.navbar__logoContainer--active .logo {
+  color: var(--highlight-color);
+}
