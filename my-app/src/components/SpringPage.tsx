@@ -13,7 +13,7 @@ export default function SpringPage({ spring }: { spring: any }) {
     return (
       
        <div>
-      <div className={style.buttonContainer}><Button href="/spring">Back</Button></div>
+      <div className={style.buttonContainer}><Button href="/springs">Back</Button></div>
       <dl className={style.properties}>
           <dt>#</dt><dd>{formattedId}</dd>
           <dt>SPRING</dt><dd>{spring?.name}</dd>
