@@ -17,6 +17,10 @@ export interface ImageWithCaptionProps {
   allImages?: Array<{file: any, caption: string}>
   /** Index of this image in the gallery */
   index?: number
+  /** Whether clicking the image opens the lightbox */
+  enableLightbox?: boolean
+  /** Title to display in lightbox header */
+  title?: string
 }
 
 export const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
@@ -24,6 +28,8 @@ export const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
     caption,
     allImages = [],
     index = 0,
+    enableLightbox = true,
+    title = '',
 }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     
@@ -49,7 +55,7 @@ export const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
                     height={800}
                     style={{ width: '100%', height: 'auto' }}
                     priority
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={enableLightbox ? () => setIsModalOpen(true) : undefined}
                 />
             </div>
             {caption && (
@@ -61,7 +67,8 @@ export const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({
         {isModalOpen && (
             <LightBox 
                 images={galleryImages} 
-                captions={galleryCaptions} 
+                captions={galleryCaptions}
+                title={title}
                 currentIndex={index} 
                 onClose={() => setIsModalOpen(false)} 
             />

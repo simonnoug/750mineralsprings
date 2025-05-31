@@ -14,6 +14,8 @@ export interface LightBoxProps {
   currentIndex: number
   /** Accessible alt text */
   captions: string[]
+  /** Title to display in the header */
+  title?: string
   onClose: () => void
 }
 
@@ -21,6 +23,7 @@ export const LightBox: React.FC<LightBoxProps> = ({
   images,
   currentIndex: initialIndex,
   captions,
+  title = '',
   onClose
 }) => {
   const [mounted, setMounted] = useState(false);
@@ -52,7 +55,10 @@ export const LightBox: React.FC<LightBoxProps> = ({
   return createPortal(
     <div className={styles.modal}>
       <div className={styles.modal__header}> 
-          <div>Loutropolis</div>
+          <div>{title}</div>
+          <div className={styles.modal__counter}>
+          {currentIndex + 1} / {images.length}
+          </div>
           <Button onClick={onClose}>Close</Button>
       </div>
       <div className={styles.modal__content}>
@@ -89,10 +95,6 @@ export const LightBox: React.FC<LightBoxProps> = ({
             {currentCaption}
           </figcaption>
         )}
-        
-        <div className={styles.modal__counter}>
-          {currentIndex + 1} / {images.length}
-        </div>
       </div>
     </div>,
     modalRoot

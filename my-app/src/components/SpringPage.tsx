@@ -98,6 +98,7 @@ export default function SpringPage({ spring }: { spring: any }) {
 					captions={galleryCaptions}
 					currentIndex={currentImageIndex}
 					onClose={() => setIsGalleryOpen(false)}
+					title={spring.name || "Spring Image Gallery"}
 				/>
 			)}
 		</div>

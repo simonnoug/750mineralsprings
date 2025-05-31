@@ -55,6 +55,7 @@ export default function EventPageClient({
             caption={img.caption}
             allImages={event.images}
             index={i}
+            title={event.title || "Event Gallery"}
           />
         ))}
       </div>

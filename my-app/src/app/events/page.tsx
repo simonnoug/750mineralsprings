@@ -12,6 +12,7 @@ import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
 export default function Events() {
   const [events, setEvents] = useState<Event[]>([])
   const [eventImage, setEventImage] = useState<any | null>(null)
+  const [eventUrl, setEventUrl] = useState<string | null>(null)
   useEffect(() => {
       const fetchEvents = async () => {
         try {
@@ -34,8 +35,10 @@ export default function Events() {
         {events.map((item, index) => (
             <div 
             key={index}
-            onMouseEnter={() => setEventImage(item.image)}
-
+            onMouseEnter={() => {
+              setEventImage(item.image);
+              setEventUrl(`/events/${item.slug}`);
+            }}
             >
             <ListItem
               href={`/events/${item.slug}`}
@@ -46,9 +49,15 @@ export default function Events() {
             </div>
         ))}
       </div>
-      <div>
-        {eventImage && <ImageWithCaption file={eventImage} caption=""/>}
-      </div>
+      {eventUrl ? (
+        <Link href={eventUrl}>
+          {eventImage && <ImageWithCaption enableLightbox={false} file={eventImage} caption=""/>}
+        </Link>
+      ) : (
+        <div>
+          {eventImage && <ImageWithCaption enableLightbox={false} file={eventImage} caption=""/>}
+        </div>
+      )}
     </TwoColumnsWrapper>
   )
   
