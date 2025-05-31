@@ -26,7 +26,8 @@ export default function NavBar() {
         </Link>
       </div>
       <div className={styles.navbar__right}>
-        <Button href="/support" isActive={pathname === '/support'}>Support us!</Button>
+        <Button variant="noBorder" href="/support" isActive={pathname === '/support'}>Support us!</Button>
+        <div>En</div>
       </div>
     </nav>
   )

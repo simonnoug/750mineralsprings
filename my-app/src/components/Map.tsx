@@ -51,7 +51,7 @@ const MapComponent = forwardRef<any, MapComponentProps>(({ setMapInstance }, ref
         latitude: 38.250,
         zoom: 5.7,
       }}
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', height: 'var(--body-height)' }}
       mapStyle="mapbox://styles/leon-ham/cm73r9sso01s901s22sv9hnlm"
       onLoad={handleMapLoad}
       ref={internalMapRef}

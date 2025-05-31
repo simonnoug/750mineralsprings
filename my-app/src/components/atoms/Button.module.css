@@ -8,6 +8,7 @@
     padding: 0 4px;
     font-size: var(fs-body);
     line-height: var(lh-body);
+    background-color: white;
   }
 
 .button:hover {
@@ -15,11 +16,22 @@
 }
 
 .button--active {
-    border-color: var(--highlight-color);
+    border-color: var(--primary-color);
 }
 
 /* Specific styling for secondary variant when active */
-.button--secondary.button--active {
+
+.button--noBorder {
+    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.button--noBorder:hover {
+    font-style: italic;
+}
+
+.button--noBorder.button--active {
     /* Add your specific styles for secondary button active state here */
-    border-color: var(--primary-color)
+    font-style: italic;
 }

@@ -102,6 +102,8 @@ html {
    --lh-caption: 1.4;
    --ls-caption: 0.04em;
 
+  --body-height: calc(100vh - 128px);
+
 }
 
 
@@ -126,6 +128,8 @@ p {
   letter-spacing: var(--ls-body);
 }
 
-
+p > a:hover {
+  text-decoration: underline;
+}
 
 

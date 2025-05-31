@@ -1,0 +1,85 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .modal__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    flex: 0 0 auto;
+  }
+  
+  .modal__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    overflow: hidden; /* if you need to scroll the caption or content */
+  }
+  
+  .modal__imageContainer {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .modal__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .modal__caption {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .modal__navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 16px;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal__navButton:first-of-type {
+    left: 20px;
+  }
+  
+  .modal__navButton:last-of-type {
+    right: 20px;
+  }
+  
+  .modal__counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+  }

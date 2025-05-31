@@ -4,6 +4,15 @@ const nextConfig = {
     domains: ['cdn.sanity.io'],
   },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/springs',
+        permanent: false,
+      },
+    ];
+  },
 }
 
 const svgr = {webpack(config) {

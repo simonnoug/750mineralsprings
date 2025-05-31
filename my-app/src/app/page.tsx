@@ -14,8 +14,7 @@ export default async function Home() {
       {homePage?.image?.file && (
         <div style={{ 
           position: 'relative', 
-          width: '50%', 
-          height: '50vh',
+          width: '70%',
           margin: '0 auto' 
         }}>
           <ImageWithCaption

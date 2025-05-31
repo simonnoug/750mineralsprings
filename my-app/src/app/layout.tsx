@@ -21,12 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={styles.layout}>
-        <header>
+        <header className={styles.layout__header}>
           <MarqueeHeader />
           <NavBar />
         </header>
         <main className={styles.layout__main}>{children}</main>
-        <Footer />
+        
+        <div id="modal-root"/> 
       </body>
     </html>
   )

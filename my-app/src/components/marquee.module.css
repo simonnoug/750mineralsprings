@@ -1,7 +1,10 @@
 .marqueeHeader{
   background-color: var(--highlight-color);
   height: 40px;
+  width: 100%;
   display: flex;
+  position: fixed;
+  top: 0;
 }
 
 .marqueeHeader__content{

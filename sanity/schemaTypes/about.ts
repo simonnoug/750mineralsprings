@@ -17,11 +17,13 @@ export default {
     {
       name: 'contact', 
       title: 'CONTACT',
-      type: 'text'
+      type: 'array',
+      of: [{type: 'block'}],
     },
     {
       name: 'about',
       title: 'ABOUT',
-      type: 'text'
+      type: 'array',
+      of: [{type: 'block'}],
     }
   ]}

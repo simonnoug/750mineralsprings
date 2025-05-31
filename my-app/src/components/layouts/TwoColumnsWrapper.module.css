@@ -5,7 +5,11 @@
 .two-col {
   display: flex;
   flex-direction: column;
-  flex: 1 /* Add this */
+  flex: 1; /* Add this */
+  height: var(--body-height);
+  width: 100%;
+  max-height: var(--body-height);
+  min-height: var(--body-height);
 }
 
 /* Mobile-only reverse */
@@ -17,6 +21,14 @@
 /* Equal flexing */
 .two-col__column {
   flex: 1 1 0;
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.two-col__column::-webkit-scrollbar {
+  display: none;
 
 }
 .two-col__column--padded > :first-child{

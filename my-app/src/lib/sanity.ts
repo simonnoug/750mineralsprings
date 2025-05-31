@@ -106,7 +106,7 @@ export const getHome = async (): Promise<any> => {
 }
 
 export const getAbout = async (): Promise<any> => {
-  const query = '*[_type == "about"]';
+  const query = '*[_type == "about" && _id=="aboutPage"][0]{contact, about, _id}';
   const about = await client.fetch(query);
   return about;
 }

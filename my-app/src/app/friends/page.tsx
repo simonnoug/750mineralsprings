@@ -2,13 +2,15 @@ import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper";
 import { getAbout, getFriends } from "@/src/lib/sanity";
 import Link from "next/link";
 import style from "@/src/components/page.module.css";
+import { PortableText } from "next-sanity";
+import Footer from "@/src/components/footer";
+
 
 export default async function About() {
    const aboutData = await getAbout();
    const friendsData = await getFriends(); 
     
     // getHome returns an array, so we need to get the first item
-    const homePage = aboutData[0];
 
     // Filter friends by status - updating case to match actual data
     const teamMembers = friendsData.filter(friend => friend.status === "Team");
@@ -18,12 +20,28 @@ export default async function About() {
     const salineFriends = friendsData.filter(friend => friend.status === "Saline");
 
   return (
+    <>
+    
     <TwoColumnsWrapper padFirst padSecond>
       <dl className={style.container}>
         <dt>Contact</dt>
-          <dd>Email: friends@750mineralsprings.gr <br/> Instagram: 750mineralsprings.gr </dd>
+          <dd>
+            <PortableText 
+                    value={aboutData?.contact}
+                    components={{
+                      block: {
+                        // Use your CSS module for paragraphs
+                       normal: ({ children }) => <p>{children}</p>}}} />
+            </dd>
         <dt>About</dt>
-          <dd>{homePage.about}</dd>
+            <dd>
+             <PortableText 
+                    value={aboutData?.about}
+                    components={{
+                      block: {
+                        // Use your CSS module for paragraphs
+                       normal: ({ children }) => <p>{children}</p>}}} />
+            </dd>
       </dl>
       <dl className={style.container}>
         <dt>Team & Collaborators</dt>
@@ -81,6 +99,7 @@ export default async function About() {
           </dd>
         </dl>
     </TwoColumnsWrapper>
-  )
-}
+    <Footer />
+    </>)}
+    
 

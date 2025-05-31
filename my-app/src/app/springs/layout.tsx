@@ -73,7 +73,7 @@ function RightColumnContent() {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       {/* Persistent Map */}
-      <div style={{ position: 'absolute', inset: 0 }}>
+      <div style={{ position: 'absolute', inset: 0, height: '100%',}}>
         <DynamicMap ref={mapRef} />
       </div>
 

@@ -5,7 +5,10 @@
     border-bottom: 1px solid var(--lowlight-color);
     justify-content: space-between; 
     padding: 0 var(--primary-padding);
-    height: 88px
+    height: 88px;
+    position: fixed;
+    top: 40px;
+    width: 100%;
 }
 
 .navbar__left {

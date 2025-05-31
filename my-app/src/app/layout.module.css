@@ -8,4 +8,17 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+    position: fixed; 
+    width: 100%;
+    top: 128px; /* Adjusted to account for the navbar height */
+}
+
+.layout__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 128px; /* Height of the navbar */
+    width: 100%;
+    z-index: 100; /* Ensure it stays above other content */
 }
