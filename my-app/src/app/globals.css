@@ -102,7 +102,10 @@ html {
    --lh-caption: 1.4;
    --ls-caption: 0.04em;
 
+  --body-height: calc(100dvh - 128px);
+  /* Fallback for browsers that don't support dvh */
   --body-height: calc(100vh - 128px);
+  --body-height: calc(100svh - 128px);
 
 }
 

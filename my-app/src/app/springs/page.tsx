@@ -2,36 +2,13 @@
 
 import { useState } from "react"
 import SpringsList from "@/src/components/SpringsList"
-import FilterUI from "@/src/components/FilterMenu"
-import Button from "@/src/components/atoms/Button"
+import FilterButtonContainer from "@/src/components/FilterButtonContainer"
 import styles from "@/src/components/page.module.css"
-import { motion } from "framer-motion"
 
 export default function SpringsPage() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-
   return (
     <>
-      <div 
-        onClick={() => setIsFilterOpen(!isFilterOpen)} 
-        className={styles.buttonContainer}
-      >
-        <Button isActive={isFilterOpen} variant="secondary">
-          Filters
-        </Button>
-        <motion.div
-          initial={{ rotate: 0 }}
-          animate={{ rotate: isFilterOpen ? 45 : 0 }}
-          style={{fontSize: '1.2rem'}}>
-          +
-        </motion.div>
-      </div>
-
-      {isFilterOpen ? (
-        <FilterUI />
-      ) : (
-        <SpringsList />
-      )}
+      <SpringsList />
     </>
   )
 }

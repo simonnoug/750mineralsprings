@@ -7,7 +7,7 @@ import Link from "next/link"
 import ListItem from "@/src/components/atoms/ListItem"
 import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
-
+import styles from '@/src/components/page.module.css'
 
 export default function Events() {
   const [events, setEvents] = useState<Event[]>([])
@@ -30,7 +30,7 @@ export default function Events() {
     }, [])
 
   return (
-    <TwoColumnsWrapper padFirst reverseOnMobile>
+    <TwoColumnsWrapper padFirst tabsOnMobile initialActiveIndex={0} >
       <div>
         {events.map((item, index) => (
             <div 
@@ -40,6 +40,9 @@ export default function Events() {
               setEventUrl(`/events/${item.slug}`);
             }}
             >
+            <div className={styles.listImage} >
+            <ImageWithCaption file={item.image} caption={null}/>
+           </div>
             <ListItem
               href={`/events/${item.slug}`}
               id={item.date}

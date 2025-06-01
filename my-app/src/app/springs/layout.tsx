@@ -11,7 +11,7 @@ import type { Spring } from "@/src/types/spring"
 import { SpringImageProvider, useSpringImage } from "@/src/contexts/SpringImageContext"
 import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
 import { Black_And_White_Picture } from "next/font/google"
-
+import FilterButtonContainer from "@/src/components/FilterButtonContainer"
 
 
 export default function SpringsLayout({
@@ -30,14 +30,23 @@ export default function SpringsLayout({
     fetchSprings()
   }, [])
 
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   return (
     <SpringProvider springs={springs}>
-       <SpringImageProvider>
-      <TwoColumnsWrapper padFirst reverseOnMobile>
-        {/* Left column: Children content (filter + list) */}
-        <div>{children}</div>
-       <RightColumnContent/>
-      </TwoColumnsWrapper>
+      <SpringImageProvider>
+        {usePathname() === '/springs' && (
+          <FilterButtonContainer 
+            isFilterOpen={isFilterOpen} 
+            setIsFilterOpen={setIsFilterOpen}
+          />)}
+        <TwoColumnsWrapper padFirst tabsOnMobile variant="springs">
+          {/* Left column: Children content (filter + list) */}
+          <div>{children}</div>
+          <RightColumnContent/>
+        </TwoColumnsWrapper>
+          
+        
+        {usePathname() !== '/springs' && children}
       </SpringImageProvider>
     </SpringProvider>
   )

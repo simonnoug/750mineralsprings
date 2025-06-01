@@ -5,10 +5,12 @@ import ListItem from "@/src/components/atoms/ListItem"
 import { useSpringImage } from "@/src/contexts/SpringImageContext"
 import { useSpringContext } from "@/src/contexts/SpringContext" 
 import formatted from "@/src/components/atoms/formatted"
-import style from "./page.module.css"
+import style from "@/src/components/page.module.css"
 import { useState } from "react"
 import LightBox from "@/src/components/atoms/LightBox"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { useMobileNav } from "@/src/contexts/MobileNavContext"
 
 export default function SpringPage({ spring }: { spring: any }) {
 	const router = useRouter()
@@ -31,6 +33,22 @@ export default function SpringPage({ spring }: { spring: any }) {
 	// Prepare gallery data
 	const galleryImages = spring?.images?.map(img => img.file) || []
 	const galleryCaptions = spring?.images?.map(img => img.title || '') || []
+
+	
+	  const { setMobileLeftExtras, setMobileMiddleExtras } = useMobileNav();
+	  
+		useEffect(() => {
+		  setMobileLeftExtras(
+			<Button onClick={handleBackClick} variant="mobileHeader">Back</Button>
+		  );
+		  setMobileMiddleExtras(
+			null
+		  );
+		  return () => {
+			setMobileLeftExtras(null);
+			setMobileMiddleExtras(null);
+		  };
+		}, [setMobileLeftExtras, setMobileMiddleExtras]);
 
 	return (
 		<div>

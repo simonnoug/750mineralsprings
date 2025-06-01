@@ -8,6 +8,8 @@ import ListItem from "@/src/components/atoms/ListItem"
 import formatted from "@/src/components/atoms/formatted"
 import style from "@/src/components/page.module.css"
 import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+import { useMobileNav } from "@/src/contexts/MobileNavContext"
 
 export default function EventPageClient({
   event
@@ -20,7 +22,22 @@ export default function EventPageClient({
   const handleBackClick = () => {
     router.back()
   }
+  const { setMobileLeftExtras, setMobileMiddleExtras } = useMobileNav();
   
+    useEffect(() => {
+      setMobileLeftExtras(
+        <Button onClick={handleBackClick}>Back</Button>
+      );
+      setMobileMiddleExtras(
+        null
+      );
+      return () => {
+        setMobileLeftExtras(null);
+        setMobileMiddleExtras(null);
+      };
+    }, [setMobileLeftExtras, setMobileMiddleExtras]);
+
+
   return (
     <TwoColumnsWrapper padFirst>
       <div>

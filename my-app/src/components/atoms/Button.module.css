@@ -35,3 +35,18 @@
     /* Add your specific styles for secondary button active state here */
     font-style: italic;
 }
+
+.button--mobileHeader {
+    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.button--mobileHeader:hover {
+    text-decoration: underline;
+}
+
+.button--mobileHeader.button--active {
+    /* Add your specific styles for secondary button active state here */
+    text-decoration: underline;
+}

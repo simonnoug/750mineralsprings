@@ -10,6 +10,11 @@
   width: 100%;
   max-height: var(--body-height);
   min-height: var(--body-height);
+  overflow: auto;
+}
+.two-col::-webkit-scrollbar {
+  display: none;
+
 }
 
 /* Mobile-only reverse */
@@ -18,13 +23,15 @@
   flex-direction: column-reverse;
 }
 
-/* Equal flexing */
 .two-col__column {
-  flex: 1 1 0;
-  overflow: auto;
+  flex: 1 0 auto; /* Changed from 1 1 0 to prevent shrinking */
+  height: min-content; /* Ensures content is not truncated */
+  overflow: auto; /* Allow content to overflow naturally */
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+/* Equal flexing */
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .two-col__column::-webkit-scrollbar {
@@ -35,13 +42,29 @@
   margin: var(--primary-padding);
 }
 
+.two-col__column--hidden-mobile {
+  display: none;
+}
+
 /* ≥ bp-md: force side-by-side and cancel the mobile-reverse */
 @media (min-width: 768px) {
   .two-col {
     flex-direction: row;
+    overflow: hidden;
   }
   /* if reverseOnMobile was applied, drop it and just row */
   .two-col--reverse-mobile {
     flex-direction: row;
   }
+  .two-col__column--hidden-mobile {
+    display: block;
+  }
+  
+  .two-col__column {
+  flex: 1 1 0;
+  overflow: auto;
+  height: var(--body-height);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 }

@@ -7,7 +7,7 @@ import style from "@/src/components/page.module.css"
 export default async function support() {
   const supportData = await getSupport();
   return (
-    <TwoColumnWrapper padFirst>
+    <TwoColumnWrapper padFirst tabsOnMobile initialActiveIndex={0}>
       <dl className={style.container}>
         <dt>Membership</dt>
         <dd>

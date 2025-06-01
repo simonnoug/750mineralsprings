@@ -8,7 +8,7 @@ const SpringsList: React.FC = () => {
 
   return (
     <div>
-      <div>
+      <div style={{ paddingTop: "30px" }}>
         {filteredSprings.map((spring) => {
           // compute three‑digit ID
 

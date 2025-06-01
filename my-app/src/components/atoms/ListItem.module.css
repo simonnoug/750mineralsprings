@@ -2,10 +2,18 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
 .ListItem__id {
-    color: var(--lowlight-color)
+    color: var(--lowlight-color);
+    flex-shrink: 0; /* Prevent ID from shrinking */
+}
+
+.ListItem__content {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ListItem:hover .ListItem__id {

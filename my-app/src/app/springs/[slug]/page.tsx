@@ -1,5 +1,5 @@
 import { getSpringBySlug } from "@/src/lib/sanity"
-import SpringPageContent from "@/src/components/SpringPage"
+import SpringPageContent from "@/src/app/springs/[slug]/SpringPageClient"
 
 export default async function SpringPage({ params }: { params: { slug: string } }) {
   const spring = await getSpringBySlug(params.slug)

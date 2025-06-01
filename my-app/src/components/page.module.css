@@ -33,9 +33,24 @@
     z-index: 10;
 }
 
+
+
 .friend:hover{
     font-style: normal;
 }
 
+.listImage {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .buttonContainer {
+        display: none; /* Changed from visibility: hidden */
+    }
+    
+    .listImage {
+        display: block; /* Show on mobile instead of hiding */
+    }
+}
 
 

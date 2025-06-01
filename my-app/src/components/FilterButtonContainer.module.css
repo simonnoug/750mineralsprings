@@ -1,0 +1,35 @@
+.filterButtonContainer {
+    position: fixed;
+    width: calc(50vw);
+    z-index: 1000;
+}
+
+.filterButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+    gap: 0.3rem; 
+    cursor: pointer;
+    margin: 0 auto;
+    width: fit-content;
+    position: relative;
+    top: 1rem;
+    z-index: 2000;
+}
+.filterUI{
+    padding: 50px var(--primary-padding);
+    position: absolute;
+    top: 0;
+    background: white;
+    z-index: 1000;
+    height: var(--body-height);
+    border-right: 1px solid var(--lowlight-color);
+    
+}
+
+@media (max-width: 768px) {
+    .filterButtonContainer {
+        position: fixed;
+        width: calc(100vw); /* Adjusted for mobile */
+    }
+}

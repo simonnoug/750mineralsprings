@@ -1,62 +1,121 @@
+/* ─── Base (desktop) styles remain largely the same ─── */
 .navbar {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    border-bottom: 1px solid var(--lowlight-color);
-    justify-content: space-between; 
-    padding: 0 var(--primary-padding);
-    height: 88px;
-    position: fixed;
-    top: 40px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--lowlight-color);
+  justify-content: space-between;
+  padding: 0 var(--primary-padding);
+  height: 88px;
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  background: var(--bg-color); /* ensure an opaque background on mobile */
+  z-index: 10;
 }
 
-.navbar__left {
-    grid-column: 1;
-    justify-self: start;
-    display: flex;
-    gap: 0.5rem;
-  }
+.navbar__left,
+.navbar__right {
+  display: flex;
+  gap: 0.5rem;
+}
 
 .navbar__right {
-    grid-column: 3;
-    justify-self: end;
-    display: flex;
-    gap: 0.5rem;
-  }
+  justify-content: flex-end;
+}
 
-  .navbar__logo {
-    grid-column: 2;
-    display: flex;
-    direction: row;
-  }
+.navbar__logo {
+  display: flex;
+  justify-self: center;
+}
 
 .logo {
-    height: 40px;
-    fill: currentColor;   
+  height: 40px;
+  fill: currentColor;
 }
 
 .navbar__logoContainer {
-    display: flex;
-    flex-direction: row; /* Default direction is row */
-    align-items: center;
-    min-width: 200px;
-    padding: 0 2rem; /* Set a minimum width before switching to column */
-}
-
-/* Media query to change direction when container is smaller than minimum width */
-@media (max-width: 768px) {
-  .navbar__logoContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: -5px; /* Add some spacing between elements when in column */
-  }
-  .logo {
-    height: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 200px;
+  padding: 0 2rem;
 }
 
 .navbar__logoContainer:hover .logo,
 .navbar__logoContainer--active .logo {
   color: var(--highlight-color);
+}
+
+/* ─── New mobile row (hidden by default) ─── */
+.navbar__mobileRow {
+  display: none;
+  width: 100%;
+  padding: 0 var(--primary-padding);
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Name of the current page */
+
+
+/* Simple burger button */
+.navbar__burger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Mobile dropdown/overlay menu (optional) */
+.navbar__mobileMenu {
+  display: none; /* will be toggled to flex/block when open */
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background: var(--bg-color);
+  padding: var(--primary-padding) 0;
+  gap: 1rem;
+}
+
+/* ─── Media Query for screens ≤ 768px ─── */
+@media (max-width: 768px) {
+  /* 1) Make navbar a column so logo stays on top */
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;     /* let height grow for two rows */
+    top: 40px;           /* pin to very top on mobile */
+    padding: 0 0;
+  }
+
+  /* 2) Hide the desktop‐only left/right links */
+  .navbar__left,
+  .navbar__right {
+    display: none;
+  }
+
+  /* 3) Shrink logo */
+  .logo {
+    height: 30px;
+  }
+
+  .navbar__logo {
+    height: 54px;
+  }
+
+  /* 4) Show the new mobile row */
+  .navbar__mobileRow {
+    display: flex;
+    height: 34px;
+    border-top: 1px solid var(--lowlight-color);
+  }
+
+
+  /* 5) If mobile menu is open, show it (you can toggle a class instead of using inline logic) */
+  .navbar__mobileMenu {
+    display: flex;
+  }
 }
