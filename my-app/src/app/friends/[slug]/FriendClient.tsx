@@ -6,10 +6,10 @@ import { PortableText } from "next-sanity"
 import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
 import { useEffect } from "react"
 import { useMobileNav } from "@/src/contexts/MobileNavContext"
-import { useRouter } from "next/navigation"
+import { GetFriendBySlugQueryResult } from "@/src/types/sanity.types"
 
 interface FriendClientProps {
-  friend: any; // You might want to define a proper type for this
+  friend: GetFriendBySlugQueryResult; // You might want to define a proper type for this
 }
 
 export default function FriendClient({ friend }: FriendClientProps) {

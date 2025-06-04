@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode, Children, isValidElement } from 'react';
+import { ReactNode, Children } from 'react';
 import styles from './TwoColumnsWrapper.module.css';
 import { useState } from 'react';
 import { useEffect } from 'react'
@@ -40,7 +40,7 @@ export default function TwoColumnsWrapper({
       // Reset to initial index for non-spring pages
       setActiveIndex(initialActiveIndex);
     }
-  }, [pathname, initialActiveIndex]);
+  }, [pathname, initialActiveIndex, activeIndex]);
   
   const wrapperClasses = [
     styles['two-col'],

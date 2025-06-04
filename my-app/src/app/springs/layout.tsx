@@ -7,11 +7,10 @@ import dynamic from "next/dynamic"
 import TwoColumnsWrapper from "@/src/components/layouts/TwoColumnsWrapper"
 import { SpringProvider } from "@/src/contexts/SpringContext"
 import { getSprings } from '@/src/lib/sanity'
-import type { Spring } from "@/src/types/spring"
 import { SpringImageProvider, useSpringImage } from "@/src/contexts/SpringImageContext"
 import ImageWithCaption from "@/src/components/atoms/ImageWithCaption"
-import { Black_And_White_Picture } from "next/font/google"
 import FilterButtonContainer from "@/src/components/FilterButtonContainer"
+import { SpringsQueryResult } from "@/src/types/sanity.types"
 
 
 export default function SpringsLayout({
@@ -19,7 +18,7 @@ export default function SpringsLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [springs, setSprings] = useState<Spring[]>([])
+  const [springs, setSprings] = useState<SpringsQueryResult>([])
   
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function RightColumnContent() {
   const { filteredSprings } = useSpringContext()
   const pathname = usePathname()
   const slug = pathname?.split("/").pop()
-  const mapRef = useRef<any>(null)
+  const mapRef = useRef(null)
   const { springImage } = useSpringImage()
 
   useEffect(() => {

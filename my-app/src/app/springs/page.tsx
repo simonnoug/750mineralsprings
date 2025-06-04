@@ -1,9 +1,6 @@
 "use client"
-
-import { useState } from "react"
 import SpringsList from "@/src/components/SpringsList"
-import FilterButtonContainer from "@/src/components/FilterButtonContainer"
-import styles from "@/src/components/page.module.css"
+
 
 export default function SpringsPage() {
   return (

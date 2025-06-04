@@ -1,6 +1,6 @@
 // components/context/SpringContext.tsx
-import { createContext, useContext, useState, useMemo, ReactNode, useEffect } from "react";
-import type { Spring } from "@/src/types/spring";
+import { createContext, useContext, useState, useMemo, ReactNode } from "react";
+import { Spring } from "../types/sanity.types";
 
 type FilterValues = {
   region: string[];
@@ -71,7 +71,7 @@ export function SpringProvider({children,springs}: SpringProviderProps) {
  // Filter the springs based on the selected filters
   const filteredSprings = useMemo(() => {
     return springs.filter((spring) => {
-      const matches = (field: keyof FilterValues, value: any) =>
+      const matches = (field: keyof FilterValues, value) =>
         filters[field].length === 0 || filters[field].includes(value);
 
       return (

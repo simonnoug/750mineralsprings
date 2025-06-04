@@ -16,7 +16,7 @@ const FILTER_OPTIONS = {
 };
 
 export default function FilterUI() {
-  const { filters, setFilters, resetFilters } = useSpringContext();
+  const { filters, setFilters } = useSpringContext();
 
   const handleToggle = (key: keyof typeof filters, value: string) => {
     const current = filters[key];

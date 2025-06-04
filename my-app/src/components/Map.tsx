@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client'
 
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';

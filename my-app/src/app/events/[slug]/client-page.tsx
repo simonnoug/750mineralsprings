@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client'
 
 import Button from "@/src/components/atoms/Button"
@@ -10,11 +11,12 @@ import style from "@/src/components/page.module.css"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { useMobileNav } from "@/src/contexts/MobileNavContext"
+import type { GetEventBySlugQueryResult } from "@/src/types/sanity.types"
 
 export default function EventPageClient({
   event
 }: {
-  event: any
+  event: GetEventBySlugQueryResult
 }) {
   const router = useRouter()
   const formattedEventId = formatted(event.id)

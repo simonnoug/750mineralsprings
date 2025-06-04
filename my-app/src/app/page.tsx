@@ -1,6 +1,4 @@
 import { getHome } from '@/src/lib/sanity';
-import Image from 'next/image';
-import { urlForImage } from '@/src/lib/sanityImageUrl';
 import ImageWithCaption from '../components/atoms/ImageWithCaption';
 
 export default async function Home() {

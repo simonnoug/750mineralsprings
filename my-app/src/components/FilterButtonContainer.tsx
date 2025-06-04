@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import FilterUI from "./FilterUI"
 import Button from "./atoms/Button"
 import styles from "./FilterButtonContainer.module.css"

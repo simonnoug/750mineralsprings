@@ -2,28 +2,27 @@
 
 import Button from "@/src/components/atoms/Button"
 import ListItem from "@/src/components/atoms/ListItem"
-import { useSpringImage } from "@/src/contexts/SpringImageContext"
 import { useSpringContext } from "@/src/contexts/SpringContext" 
 import formatted from "@/src/components/atoms/formatted"
 import style from "@/src/components/page.module.css"
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import LightBox from "@/src/components/atoms/LightBox"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { useMobileNav } from "@/src/contexts/MobileNavContext"
+import { SpringBySlugQueryResult } from "@/src/types/sanity.types"
 
-export default function SpringPage({ spring }: { spring: any }) {
+export default function SpringPage({ spring }: { spring: SpringBySlugQueryResult }) {
 	const router = useRouter()
 	const { setActiveId } = useSpringContext() // Import from SpringContext
 	const formattedId = formatted(spring.id)
-	const { setSpringImage } = useSpringImage()
 	const [isGalleryOpen, setIsGalleryOpen] = useState(false)
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-	const handleBackClick = () => {
+	const handleBackClick = useCallback(() => {
 		setActiveId(null) // Reset the active spring ID
 		router.back() // Use browser history instead of hardcoded route
-	}
+	}, [setActiveId, router]);
 
 	const openGallery = (index: number) => {
 		setCurrentImageIndex(index)
@@ -48,7 +47,7 @@ export default function SpringPage({ spring }: { spring: any }) {
 			setMobileLeftExtras(null);
 			setMobileMiddleExtras(null);
 		  };
-		}, [setMobileLeftExtras, setMobileMiddleExtras]);
+		}, [setMobileLeftExtras, setMobileMiddleExtras, handleBackClick]);
 
 	return (
 		<div>

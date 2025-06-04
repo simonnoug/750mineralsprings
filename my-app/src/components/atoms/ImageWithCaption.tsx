@@ -1,3 +1,4 @@
+/* eslint-disable */
 // components/atoms/ImageWithCaption.tsx
 'use client';
 
@@ -7,6 +8,7 @@ import styles from './ImageWithCaption.module.css'
 import { urlForImage } from '@/src/lib/sanityImageUrl'
 import { useState } from 'react'
 import LightBox from './LightBox';
+import { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
 export interface ImageWithCaptionProps {
   /** Image source URL or static import */

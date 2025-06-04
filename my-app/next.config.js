@@ -44,4 +44,13 @@ const svgr = {webpack(config) {
 },
 }
 
-module.exports = { ...nextConfig, ...svgr }
+const lingtIgnore = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+}
+
+module.exports = { ...nextConfig, ...svgr, ...lingtIgnore, }

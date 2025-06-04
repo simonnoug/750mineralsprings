@@ -1,14 +1,11 @@
 import "./globals.css"
 import styles from "./layout.module.css"
 import type { Metadata } from "next"
-import { Source_Serif_4 } from "next/font/google"
 import NavBar from "@/src/components/nav-bar"
-import Footer from "@/src/components/footer"
 import MarqueeHeader from '@/src/components/marquee'
 import type React from "react"
 import { MobileNavProvider } from "../contexts/MobileNavContext"
 
-const sourceSerif = Source_Serif_4({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Friends of the 750 Mineral Springs of Greece",
