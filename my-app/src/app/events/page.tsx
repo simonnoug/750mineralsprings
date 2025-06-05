@@ -40,15 +40,16 @@ export default function Events() {
               setEventUrl(`/events/${item.slug}`);
             }}
             >
-            <div className={styles.listImage} >
-            <ImageWithCaption file={item.image} caption={null}/>
-           </div>
-            <ListItem
-              href={`/events/${item.slug}`}
-              id={item.date}
-              content={item.title}
-              isHovered={eventImage === item.image}
-            />
+              <Link href={`/events/${item.slug}`} className={styles.listImage}>
+                  <ImageWithCaption enableLightbox={false} file={item.image} caption={null}/>
+              </Link>
+              
+              <ListItem
+                href={`/events/${item.slug}`}
+                id={item.date}
+                content={item.title}
+                isHovered={eventImage === item.image}
+              />
             </div>
         ))}
       </div>
