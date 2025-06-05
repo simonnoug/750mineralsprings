@@ -50,3 +50,11 @@
     /* Add your specific styles for secondary button active state here */
     text-decoration: underline;
 }
+
+.button--image {
+    color: var(--lowlight-color);
+    border: none;
+}
+.button--image:hover {
+    color: var(--primary-color);
+}

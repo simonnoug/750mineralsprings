@@ -5,7 +5,7 @@ type ButtonProps = {
   href?: string         // if present, render a Next.js Link
   onClick?: () => void  // if not, render a normal <button>
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'noBorder' | 'mobileHeader' // optional BEM modifier
+  variant?: 'primary' | 'secondary' | 'noBorder' | 'mobileHeader' | 'image' // optional BEM modifier
   isActive?: boolean      // ← new
 }
 

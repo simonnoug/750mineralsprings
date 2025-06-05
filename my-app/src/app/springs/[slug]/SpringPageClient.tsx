@@ -84,17 +84,17 @@ export default function SpringPage({ spring }: { spring: SpringBySlugQueryResult
 				<dd>{spring?.ownership?.longerOption}</dd>
 				<dt>TREATMENTS</dt>
 				<dd>{spring?.treatment}</dd>
-				<dt onClick={() => openGallery(0)}>PHOTO</dt>
+				<dt >PHOTO</dt> 
 				<dd>
 					{spring?.images?.length > 0 ? (
 						spring.images.map((image, index) => (
 							<div key={index}>
-								<button 
+								<Button 
 									onClick={() => openGallery(index)}
-									className={style.imageButton}
+									variant="image"
 								>
 									{image.title || `Image ${index + 1}`}
-								</button>
+								</Button>
 							</div>
 						))
 					) : (

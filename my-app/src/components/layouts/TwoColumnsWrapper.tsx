@@ -40,7 +40,7 @@ export default function TwoColumnsWrapper({
       // Reset to initial index for non-spring pages
       setActiveIndex(initialActiveIndex);
     }
-  }, [pathname, initialActiveIndex, activeIndex]);
+  }, [pathname, initialActiveIndex]);
   
   const wrapperClasses = [
     styles['two-col'],
